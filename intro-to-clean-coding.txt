@@ -119,14 +119,15 @@ isSumSquare(array);
 7. Given an array of integers, find out whether the array contains any duplicate elements. The function should return true if any value appears at least twice in the array, and false if every element is distinct.
 
 function hasDuplicateElements(array){
-  for(var element = 0; element < array.length; element++){
-    for (var otherElement = 0; otherElement < element; otherElement++) {
-            if (array[element] === array[otherElement]){
-              return true;  
+  var seenElements = Object.create(null);
+      for(var i = 0; i < array.length; i++){
+          var element = array[i];
+       if (element in seenElements){
+            return true;  
+          }
+            seenElements[element] = true;
             }
-            }
-    }
-  return false;
+            return false;
   }
 let array = [1,2,3,3];
 console.log(hasDuplicateElements(array)); //returns true
