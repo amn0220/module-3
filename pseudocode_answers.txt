@@ -41,13 +41,15 @@ END
 
 4.Using the pseudocode you wrote for the previous question, implement it in any computer language of your choice.
 
-var phonebook = [{‘ashley’: ‘213-555-5555’}, {‘joshua’: ‘616-555-5555’}];
-function findEntry(name, phoneNumber)
+var phonebook = ['ashley','213-555-5555','joshua','616-555-5555'];
+function findEntry(entry) {
 	for(var i = 0; i < phonebook.length; i++){
 		if(entry === phonebook[i]){
-			return ‘Entry was found!’
+            return 'Entry was found!';
 		}
 	}
-	return ‘Entry was not found!’
+	return 'Entry was not found!';
 }
-findEntry(name, phoneNumber);
+var entry = findEntry();
+console.log(findEntry('james')); // 'Entry was not found!'
+console.log(findEntry('ashley')); // 'Entry was found!'
