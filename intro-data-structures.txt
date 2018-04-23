@@ -22,42 +22,44 @@ class RideLine {
     this.name.push(name);
   }
 
-  findPersonInLine(name){
+  findPerson(name){
     for (let i = 0; i < this.name.length; i++){
-      if (this.name[i] === name){
-      console.log (name + ‘ is number ‘ i + ‘ in line.’);
+      if (this.name[i] === name) {
+      console.log (name + " is number" + " " + i + " in line.");
       } else {
-          console.log (name + ‘ is not in line for this ride.’);
+          console.log (name + " is not in line for this ride.");
       }
     }
   }
 
   cutInLine(name){
      this.name.splice(1, 0, name);
-     console.log(this.name + ‘cut in line! How dare you!’);
+     console.log(this.name + ":" + " Beware! A line cutter is in your midst!");
    }
 
   leaveLine(name){
      let index = this.name.indexOf(name);
      if (index !== name) {
-     this.names.splice(4, 1);
+     this.name.splice(4, 1)
      }
-     console.log(this.name + ‘left the line. Scaredy cat!’);
+     console.log("Hey! " + this.name + "..." + " A scaredy cat left the line!");
    }
 
 }
-let line = new Line();
-
-
+let line = new RideLine();
 
 line.addPerson("Vivian");
 line.addPerson("Ava");
 line.addPerson("Josh");
 line.addPerson("Patrick");
 line.addPerson("Mike");
-line.findPersonInLine(“Josh");
-line.findPersonInLine(“Emily”);
+
+
+line.findPerson("Josh");
+line.findPerson("Emily");
+
 line.cutInLine("Melissa");
+
 line.leaveLine("Patrick");
 
 
