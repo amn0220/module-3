@@ -1,0 +1,71 @@
+1.What is a hash table?
+
+Hash tables are like arrays that store values by linking them to unique keys.
+
+2.What is hashing?
+
+Hashing is when strings are converted into hash codes, or numerical indexes in the hash table.
+
+3.How does a hash table store data?
+
+Hash tables take the input data, calculates a number/key to associate with the data, and stores that number which can be referenced later to find the store stored under it. multiple values can be stored in one hash key.
+
+4. How are hash tables and objects different?
+
+When using a hash table, data containing consistently formatted values are stored with identifiers. Objects can store a static number of various types of values.
+
+5. Determine whether you would use a hash table or an object to store each of the following pieces of data:
+
+-A list of pets and their unique names.
+
+Hash table
+
+-The name, age, and the birthday of your best friend.
+
+Object
+
+-The name and location of every company in a given city.
+
+Hash table
+
+
+-All of the books checked out from a library by a particular individual.
+
+Hash table
+
+-The primary and secondary phone numbers for a contact.
+
+Object
+
+6. Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
+
+function createCustomerInfo (name, address, phoneNumber){
+	CREATE HashMapName 
+	CREATE HashMapAddress 
+	CREATE HashMapPhoneNumber
+	STORE name, address, phoneNumber in hash table (with values)
+}
+
+function lookupCustomer(phoneNumber){
+	CALL createCustomerInfo function
+	CHECK phoneNumber matches createCustomerInfo
+	RETURN true (‘Customer found’) or false (‘Customer not found. Create new		account?’)
+}
+7. Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+
+function trackInventory(inventory){
+	CREATE HashMapInventory
+	STORE inventory in hash table (each item with a value)
+	CALL trackInventory(value)
+}
+8. Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
+
+function enterDigitalNewspaper(publisher, publicationDate){
+	CREATE HashMapNewspaper with publisher and publicationDate for each digital copy
+	STORE publisher and publicationDate per copy in hash table
+}
+
+function searchNewspaper(publisher, publicationDate){
+	CHECK HashMapNewspaper for digital copy using paramters
+	RETURN newspaper or not found
+}
