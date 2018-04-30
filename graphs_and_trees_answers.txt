@@ -1,0 +1,91 @@
+#Exercises
+
+1. What is a binary tree and what makes it unique to other trees?
+
+A binary tree is a data structure that starts with root data and branches in two directions, left and right. Each child node branches into two (left and right) as well, and the structure continues to do so with all of its data.
+
+2. What is a heuristic?
+
+A heuristic is a way to solve a problem while ranking alternatives and return a ‘good enough’ solution to the problem in a reasonable amount of time. The solution may not be exact, which is why ‘good enough’ is a measure of the solution.
+
+3. What is another problem besides the shortest-path problem that requires the use of heuristics?
+
+A real world problem could be like when the recent E. coli outbreak in romaine lettuce happened, we may eat less romaine lettuce, wash the lettuce more thoroughly, or avoid romaine lettuce all together until there’s an end to the outbreak. We use educated guesses to rank the alternatives to not be exposed to the bacteria.
+
+4. What is the difference between a depth-first search and a breadth-first search?
+
+A DFS checks nodes along branches, up and down, left to right. A BFS checks rows of nodes starting at the root and working its way down through the data.
+
+5. Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+
+An undirected, a-cyclic, unweighted graph is one in which nodes are connected in any direction, do not form loops, and don’t measure the cost of traveling between nodes.
+
+6. What kind of graph is a binary search tree?
+
+A binary search tree is an undirected, a-cyclic graph that can be weighted or unweighted depending on whether the engineer decides to use either characteristic for specific data.
+
+#Programming Questions
+
+1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+
+—>Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
+
+-Starting at root, check left and right branches to see if value exists, return true if so, false if not.
+
+function checkValuePresence(value){
+  let current = this.root;
+  while (current){
+    if (value === current.value){
+      return true;
+    }
+    else if (value < current.value){
+      current = current.left;
+    }
+    else {
+      current = current.right;
+    }
+   }
+   return false;
+ }
+checkValuePresence();
+
+2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+
+
+—> Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
+
+-Add distance between n1 and root and n2 and root and subtract 2*distance between root and lowest common ancestor.
+
+
+function findDistance(root, n1, n2){
+  var x = findPathLength(root, n1);
+  var y = findPathLength(root, n2);
+  var lowestAncestor = findLowestCommonAncestor(root, n1, n2);
+  var z = 2*findPathLength(root, lowestAncestor);
+
+  return x + y - z;
+}
+
+function findPathLength(root, n){
+   if(root !== null){
+      var distance = 0;
+   if(root === null){
+      return distance;
+   } else if(root > n){
+     distance = 1 + findPathLength(root.left, n);
+   } distance = 1 + findPathLength(root.right, n);
+ } return 0;
+}
+
+function findLowestCommonAncestor (root, n1, n2) {
+   if(root === 0){
+      return null;
+   }
+   if(root > n1 && root > n2){
+      return findLowestCommonAncestor(root.left, n1, n2);
+   }
+   else if(root < n1 && root < n2){
+      return findLowestCommonAncestor(root.right, n1, n2);
+   }
+   return root;
+}
